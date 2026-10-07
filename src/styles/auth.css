@@ -1,0 +1,407 @@
+.auth-switch {
+    display: flex;
+    background: #f1f3f5;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 28px;
+    position: relative;
+}
+
+.auth-switch-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 9px;
+    text-decoration: none;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-switch-btn:hover {
+    color: #2c5f2d;
+}
+
+.auth-switch-btn.active {
+    background: #2c5f2d;
+    color: white;
+    box-shadow: 0 2px 6px rgba(44, 95, 45, 0.25);
+}
+
+
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.auth-image {
+    flex: 1;
+    background-image: url("https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .auth-image {
+        display: block;
+    }
+}
+
+.auth-image-overlay {
+    position: absolute;
+    bottom: 80px;
+    left: 40px;
+    right: 40px;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    color: white;
+}
+
+.auth-image-overlay h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.auth-image-overlay p {
+    font-size: 0.80rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.auth-form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    background: #fff;
+}
+
+.auth-form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.8rem;
+    margin-bottom: 22px;
+}
+
+.auth-input {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    font-size: 0.85rem;
+}
+
+.auth-input:focus {
+    border-color: #2c5f2d;
+    box-shadow: 0 0 0 2px rgba(55, 108, 55, 0.15);
+}
+
+.auth-btn {
+    margin: 20px 0px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #2c5f2d;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.auth-btn:hover {
+    background: #1f4520;
+    color: white;
+}
+
+.auth-btn{
+    background: #2c5f2d;
+}
+
+.auth-footer {
+    text-align: center;
+    /* margin-top: 24px; */
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.auth-footer a {
+    color: #2c5f2d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.auth-link {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth-link a {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: 0 8px;
+}
+
+.auth-link a:hover {
+    color: #2c5f2d;
+}
+
+.onboarding-container {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.onboarding-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        360deg,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(44, 95, 45, 0.20) 120%
+    );
+}
+
+.onboarding-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 40px 24px;
+    max-width: 700px;
+}
+
+.onboarding-brand {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    margin-top: 80px;
+    margin-bottom: 26px;
+    color: white;
+}
+
+.onboarding-tagline {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    font-weight: 350;
+    line-height: 2;
+}
+
+.onboarding-buttons {
+    display: flex;
+    gap: 26px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.btn-onboarding-primary {
+    background: #2c5f2d;
+    color: white;
+    border: none;
+    padding: 16px 100px;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-onboarding-primary:hover {
+    background: #1f4520;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-onboarding-secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgb(155, 155, 155);
+    padding: 16px 100px;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-onboarding-secondary:hover {
+    background: white;
+    color: #2c5f2d;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    .onboarding-brand {
+        font-size: 2.5rem;
+    }
+
+    .onboarding-tagline {
+        font-size: 1rem;
+    }
+
+    .btn-onboarding-primary,
+    .btn-onboarding-secondary {
+        width: 100%;
+        padding: 14px 24px;
+    }
+}
+
+/* ============ APP BACKGROUND (logged-in pages) ============ */
+.app-bg {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=1600&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.app-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(20, 40, 20, 0.65) 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+.app-content {
+    position: relative;
+    z-index: 1;
+    padding: 32px 0 60px;
+}
+
+/* ============ GLASS CARD (reusable) ============ */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.glass-panel h1,
+.glass-panel h2,
+.glass-panel h3,
+.glass-panel h4,
+.glass-panel h5 {
+    color: white;
+}
+
+.glass-panel p,
+.glass-panel .text-muted {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.glass-panel a {
+    color: white;
+}
+
+.glass-panel .card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.glass-panel .card-body {
+    color: white;
+}
+
+/* ============ TRANSPARENT NAVBAR ============ */
+.glass-navbar {
+    background: rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.glass-navbar .navbar-brand,
+.glass-navbar .nav-link,
+.glass-navbar .text-white {
+    color: white !important;
+}
+
+.glass-navbar .nav-link:hover {
+    color: #a8d5a8 !important;
+}
+
+/* ============ SMALL BUTTON VARIANTS ============ */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-glass-green {
+    background: #2c5f2d;
+    border: 1px solid #2c5f2d;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-glass-green:hover {
+    background: #1f4520;
+    color: white;
+}
