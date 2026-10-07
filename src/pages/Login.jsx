@@ -30,7 +30,7 @@ function Login() {
                 navigate("/dashboard")
             } catch (error) {
                 setErrors({
-                    general: error.message || "Login failed. Please try again."
+                    general: error?.response?.data?.message || error.message || "Login failed. Please try again."
                 })
             } finally {
                 setSubmitting(false)

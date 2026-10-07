@@ -35,7 +35,7 @@ function Register() {
                 navigate("/login")
             } catch (error) {
                 setErrors({
-                    general: error.message || "Registration failed. Please try again."
+                    general: error?.response?.data?.message || error.message || "Registration failed. Please try again."
                 })
             } finally {
                 setSubmitting(false)
