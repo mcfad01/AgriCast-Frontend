@@ -13,7 +13,6 @@ function App() {
     const authRoutes = ["/", "/login", "/register"]
     const isAuthPage = authRoutes.includes(location.pathname)
 
-    // If on auth page OR not logged in, render plain (no AppLayout)
     if (isAuthPage || !user) {
         return (
             <Routes>
@@ -25,7 +24,6 @@ function App() {
         )
     }
 
-    // Otherwise render inside the AppLayout with background + navbar
     return (
         <AppLayout>
             <Routes>
