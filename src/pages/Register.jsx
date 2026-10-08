@@ -57,7 +57,7 @@ function Register() {
 
             <div className="auth-form-side">
                 <div className="auth-form-wrapper">
-                    <img src="/public/myLogo.svg" className="navbar-logo" />
+                    <img src="/myLogo.svg" className="navbar-logo" />
                     <h2 className="auth-title">Create your AgriCast account</h2>
                     <p className="auth-subtitle">Plan smarter with weather insights built for your farm.</p>
 
