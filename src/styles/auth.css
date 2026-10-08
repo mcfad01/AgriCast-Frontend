@@ -1,7 +1,7 @@
 .auth-switch {
     display: flex;
     background: #f1f3f5;
-    border-radius: 12px;
+    border-radius: 30px;
     padding: 4px;
     margin-bottom: 28px;
     position: relative;
@@ -10,13 +10,13 @@
 .auth-switch-btn {
     flex: 1;
     text-align: center;
-    padding: 10px 16px;
-    border-radius: 9px;
+    padding: 12px 16px;
+    border-radius: 30px;
     text-decoration: none;
-    color: #6c757d;
+    color: #444546;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.25s ease;
+    transition: 0.6s ease;
     position: relative;
     z-index: 1;
 }
@@ -31,7 +31,6 @@
     box-shadow: 0 2px 6px rgba(44, 95, 45, 0.25);
 }
 
-
 .auth-container {
     display: flex;
     min-height: 100vh;
@@ -40,7 +39,7 @@
 
 .auth-image {
     flex: 1;
-    background-image: url("https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-image: url('https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -53,12 +52,21 @@
     }
 }
 
+.navbar-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
+    justify-self: center;
+    margin-top: -20px;
+}
+
 .auth-image-overlay {
     position: absolute;
-    bottom: 80px;
+    bottom: 100px;
     left: 40px;
     right: 40px;
-    padding: 24px;
+    padding: 24px 40px;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
     border-radius: 20px;
@@ -67,12 +75,12 @@
 
 .auth-image-overlay h3 {
     font-size: 1.2rem;
-    margin-bottom: 12px;
+    margin-bottom: 32px;
     font-weight: 600;
 }
 
 .auth-image-overlay p {
-    font-size: 0.80rem;
+    font-size: 0.9rem;
     margin: 0;
     opacity: 0.8;
 }
@@ -88,28 +96,28 @@
 
 .auth-form-wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 520px;
 }
 
 .auth-title {
     font-size: 1.75rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .auth-subtitle {
     text-align: center;
     color: #6c757d;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-bottom: 22px;
 }
 
 .auth-input {
     padding: 12px 14px;
-    border-radius: 10px;
+    border-radius: 30px;
     border: 1px solid #dee2e6;
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 
 .auth-input:focus {
@@ -119,8 +127,8 @@
 
 .auth-btn {
     margin: 20px 0px;
-    padding: 12px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 30px;
     background: #2c5f2d;
     border: none;
     color: white;
@@ -135,7 +143,7 @@
     color: white;
 }
 
-.auth-btn{
+.auth-btn {
     background: #2c5f2d;
 }
 
@@ -175,7 +183,7 @@
 .onboarding-container {
     min-height: 100vh;
     width: 100%;
-    background-image: url("https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-image: url('https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -187,11 +195,9 @@
 .onboarding-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        360deg,
-        rgba(0, 0, 0, 0.9) 0%,
-        rgba(44, 95, 45, 0.20) 120%
-    );
+    background: linear-gradient(360deg,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(44, 95, 45, 0.2) 120%);
 }
 
 .onboarding-content {
@@ -209,7 +215,7 @@
     letter-spacing: 2px;
     line-height: 1.3;
     margin-top: 80px;
-    margin-bottom: 26px;
+    margin-bottom: 36px;
     color: white;
 }
 
@@ -234,7 +240,7 @@
     color: white;
     border: none;
     padding: 16px 100px;
-    border-radius: 18px;
+    border-radius: 30px;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
@@ -248,11 +254,12 @@
 }
 
 .btn-onboarding-secondary {
-    background: transparent;
+    background: rgba(190, 190, 190, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(16px);
     color: white;
-    border: 1px solid rgb(155, 155, 155);
     padding: 16px 100px;
-    border-radius: 18px;
+    border-radius: 30px;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
@@ -263,6 +270,48 @@
     background: white;
     color: #2c5f2d;
     transform: translateY(-2px);
+}
+
+.marquee {
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto 0;
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 15%,
+            black 85%,
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 15%,
+            black 85%,
+            transparent 100%);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-item {
+    padding-right: 40px;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    font-weight: 300;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 @media (max-width: 576px) {
@@ -281,11 +330,11 @@
     }
 }
 
-/* ============ APP BACKGROUND (logged-in pages) ============ */
+/* DASHBOARD */
 .app-bg {
     min-height: 100vh;
     width: 100%;
-    background-image: url("https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=1600&auto=format&fit=crop");
+    background-image: url('https://images.unsplash.com/photo-1675972712628-b51332ee46ec?q=80&w=1600&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -295,11 +344,9 @@
 .app-overlay {
     position: fixed;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.55) 0%,
-        rgba(20, 40, 20, 0.65) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(20, 40, 20, 0.65) 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -310,7 +357,6 @@
     padding: 32px 0 60px;
 }
 
-/* ============ GLASS CARD (reusable) ============ */
 .glass-panel {
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(16px);
@@ -318,8 +364,7 @@
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 20px;
     padding: 28px;
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.25),
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
     color: white;
 }
@@ -351,7 +396,6 @@
     color: white;
 }
 
-/* ============ TRANSPARENT NAVBAR ============ */
 .glass-navbar {
     background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(12px);
@@ -372,7 +416,6 @@
     color: #a8d5a8 !important;
 }
 
-/* ============ SMALL BUTTON VARIANTS ============ */
 .btn-glass {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -404,4 +447,20 @@
 .btn-glass-green:hover {
     background: #1f4520;
     color: white;
+}
+
+@media (max-width: 576px) {
+    .onboarding-brand {
+        font-size: 2.5rem;
+    }
+
+    .onboarding-tagline {
+        font-size: 1rem;
+    }
+
+    .btn-onboarding-primary,
+    .btn-onboarding-secondary {
+        width: 100%;
+        padding: 14px 24px;
+    }
 }

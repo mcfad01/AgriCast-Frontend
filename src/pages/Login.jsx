@@ -51,6 +51,7 @@ function Login() {
 
             <div className="auth-form-side">
                 <div className="auth-form-wrapper">
+                    <img src="/agrilogo.svg" className="navbar-logo"/>
                     <h2 className="auth-title">Welcome back to AgriCast</h2>
                     <p className="auth-subtitle">Check the weather and plan your farm with confidence.</p>
 

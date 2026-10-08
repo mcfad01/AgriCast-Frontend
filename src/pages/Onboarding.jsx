@@ -22,9 +22,16 @@ function Onboarding() {
                     </Link>
                 </div>
 
-                <p className="onboarding-tagline fst-italic">
-                    Real-time forecasts  •  Weather tracking  •  Farm planning
-                </p>
+                <div className="marquee">
+                    <div className="marquee-track">
+                        <div className="marquee-item">
+                            Real-time forecasts&nbsp;&nbsp;•&nbsp;&nbsp;Weather tracking&nbsp;&nbsp;•&nbsp;&nbsp;Farm planning&nbsp;&nbsp;•&nbsp;&nbsp;
+                        </div>
+                        <div className="marquee-item" aria-hidden="true">
+                            Real-time forecasts&nbsp;&nbsp;•&nbsp;&nbsp;Weather tracking&nbsp;&nbsp;•&nbsp;&nbsp;Farm planning&nbsp;&nbsp;•&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
