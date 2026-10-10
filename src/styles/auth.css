@@ -57,8 +57,7 @@
     height: 65px;
     object-fit: contain;
     display: block;
-    justify-self: center;
-    margin: auto 0;
+    display: inline-block;
 }
 
 .auth-image-overlay {
@@ -97,6 +96,7 @@
 .auth-form-wrapper {
     width: 100%;
     max-width: 520px;
+    text-align: center;
 }
 
 .auth-title {
