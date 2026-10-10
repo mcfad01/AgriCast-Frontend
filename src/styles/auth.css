@@ -58,7 +58,7 @@
     object-fit: contain;
     display: block;
     justify-self: center;
-    margin-top: -20px;
+    margin: auto 0;
 }
 
 .auth-image-overlay {
