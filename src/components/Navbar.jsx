@@ -15,10 +15,6 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark glass-navbar">
             <div className="container">
-                <Link className="navbar-brand fw-bold" to="/dashboard">
-                    AgriCast
-                </Link>
-
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -44,9 +40,13 @@ function Navbar() {
                         </li>
                     </ul>
 
-                    <div className="d-flex align-items-center gap-3">
-                        <span className="text-white small">{user?.fullname}</span>
-                        <button className="btn btn-outline-light btn-sm" onClick={handleLogout}>
+                    <div className="d-flex align-items-center gap-1">
+                        <Link to="/profile" className="avatar-btn" title="Go to profile">
+                            {user?.fullname?.charAt(0).toUpperCase()}
+                        </Link>
+                        <span className="text-white small d-none d-md-inline">{user?.fullname}</span>
+
+                        <button className="btn btn-outline-light btn-sm mx-3 " onClick={handleLogout}>
                             Logout
                         </button>
                     </div>

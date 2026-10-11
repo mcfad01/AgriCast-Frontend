@@ -1,25 +1,111 @@
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import WeatherCard from "../components/WeatherCard"
+import ForecastList from "../components/ForecastList"
+import { getCurrentWeather, getForecast, groupForecastByDay } from "../api/weather"
+import { Sun } from "lucide-react"
 
 function Dashboard() {
     const { user } = useSelector((state) => state.auth)
+    const [currentWeather, setCurrentWeather] = useState(null)
+    const [forecast, setForecast] = useState([])
+    const [weatherLoading, setWeatherLoading] = useState(true)
+    const [weatherError, setWeatherError] = useState("")
+
+    const location = user?.farmLocation
+
+    useEffect(() => {
+        if (!location?.latitude || !location?.longitude) {
+            setWeatherLoading(false)
+            return
+        }
+
+        const fetchWeather = async () => {
+            setWeatherLoading(true)
+            setWeatherError("")
+
+            try {
+                const [current, forecastData] = await Promise.all([
+                    getCurrentWeather(location.latitude, location.longitude),
+                    getForecast(location.latitude, location.longitude)
+                ])
+
+                setCurrentWeather(current)
+                setForecast(groupForecastByDay(forecastData.list))
+            } catch (error) {
+                console.log(error)
+                setWeatherError("Could not load weather data. Please try again.")
+            } finally {
+                setWeatherLoading(false)
+            }
+        }
+
+        fetchWeather()
+    }, [location?.latitude, location?.longitude])
 
     return (
         <>
-            <div className="glass-panel mb-4">
-                <h1 className="mb-1">Hello, {user?.fullname}</h1>
-                <p className="mb-0">{user?.email}</p>
+            {/* Greeting */}
+            <div className=" mb-5">
+                <div className="d-flex align-items-center gap-3">
+                    <div className="glass-icon">
+                        <Sun size={20} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                        <h1 className="mb-1" style={{ fontSize: "1.75rem", color: "#ffffff" }}>
+                            Hello, {user?.fullname}
+                        </h1>
+                        <p className="mb-0" style={{ fontSize: "0.80rem", opacity: 0.70, color: "#ffffffb9" }}>{user?.email}</p>
+                    </div>
+                </div>
             </div>
 
-            <div className="row">
-                <div className="col-md-6 mb-4">
+            {/* Weather section */}
+            {!location?.latitude || !location?.longitude ? (
+                <div className="glass-panel mb-4">
+                    <h5 className="mb-3"> Farm Location Needed</h5>
+                    <p>Set your farm location to see the weather forecast.</p>
+                    <Link to="/profile" className="btn-glass-green d-inline-block">
+                        Set Location
+                    </Link>
+                </div>
+            ) : weatherLoading ? (
+                <div className="glass-panel mb-4 text-center">
+                    <div className="spinner-border text-light" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                    <p className="mt-3 mb-0">Fetching weather for your farm...</p>
+                </div>
+            ) : weatherError ? (
+                <div className="glass-panel mb-4">
+                    <div className="alert alert-danger mb-0">{weatherError}</div>
+                </div>
+            ) : (
+                <>
+                    <div className="row mb-4">
+                        <div className="col-md-5 mb-3 mb-md-0">
+                            <WeatherCard weather={currentWeather} />
+                        </div>
+                        <div className="col-md-7">
+                            <ForecastList forecast={forecast} />
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {/* Farm location card */}
+            <div className="row mb-4">
+                <div className="col-md-6 mb-3">
                     <div className="glass-panel h-100">
-                        <h5 className="mb-3">📍 Farm Location</h5>
-                        {user?.farmLocation?.name ? (
+                        <h5 className="mb-3"> Farm Location</h5>
+                        {location?.name ? (
                             <>
-                                <p className="mb-1"><strong>{user.farmLocation.name}</strong></p>
-                                <p className="small mb-0">
-                                    Lat: {user.farmLocation.latitude}, Lng: {user.farmLocation.longitude}
+                                <p className="mb-1">
+                                    <strong>{location.name}</strong>
+                                </p>
+                                <p className="small mb-0" style={{ opacity: 0.75 }}>
+                                    Lat: {location.latitude}, Lng: {location.longitude}
                                 </p>
                             </>
                         ) : (
@@ -31,9 +117,9 @@ function Dashboard() {
                     </div>
                 </div>
 
-                <div className="col-md-6 mb-4">
+                <div className="col-md-6 mb-3">
                     <div className="glass-panel h-100">
-                        <h5 className="mb-3">📅 Saved Dates</h5>
+                        <h5 className="mb-3"> Saved Dates</h5>
                         <p>Coming soon...</p>
                         <Link to="/saved-dates" className="btn-glass-green d-inline-block mt-3">
                             View All
