@@ -6,6 +6,7 @@ import ForecastList from "../components/ForecastList"
 import { getCurrentWeather, getForecast, groupForecastByDay } from "../api/weather"
 import { Sun } from "lucide-react"
 
+
 function Dashboard() {
     const { user } = useSelector((state) => state.auth)
     const [currentWeather, setCurrentWeather] = useState(null)

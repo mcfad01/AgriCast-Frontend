@@ -4,9 +4,11 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { User, MapPin, Crosshair } from "lucide-react"
 import { updateLocationThunk } from "../features/auth/authThunks"
+import { useNavigate } from "react-router-dom"
 
 function Profile() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { user } = useSelector((state) => state.auth)
 
     const [successMessage, setSuccessMessage] = useState("")
@@ -39,6 +41,7 @@ function Profile() {
                 setSuccessMessage("")
                 await dispatch(updateLocationThunk(values)).unwrap()
                 setSuccessMessage("Farm location updated successfully!")
+                setTimeout(() => navigate("/dashboard"), 1200)
             } catch (error) {
                 setErrors({
                     general: error?.response?.data?.message || "Could not update location."
@@ -169,6 +172,14 @@ function Profile() {
                         disabled={formik.isSubmitting}
                     >
                         {formik.isSubmitting ? "Saving..." : "Save Farm Location"}
+                    </button>
+                    
+                    <button
+                        type="button"
+                        className="btn-glass ms-2 mt-2"
+                        onClick={() => navigate("/dashboard")}
+                    >
+                        Cancel
                     </button>
                 </form>
             </div>
