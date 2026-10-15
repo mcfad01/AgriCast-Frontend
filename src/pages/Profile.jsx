@@ -17,12 +17,12 @@ function Profile() {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            name: user?.farmLocation?.name || "",
+            city: user?.farmLocation?.city || "",
             latitude: user?.farmLocation?.latitude || "",
             longitude: user?.farmLocation?.longitude || ""
         },
         validationSchema: Yup.object({
-            name: Yup.string()
+            city: Yup.string()
                 .min(2, "Name must be at least 2 characters")
                 .required("Location name is required"),
             latitude: Yup.number()
@@ -112,15 +112,15 @@ function Profile() {
                         <label className="form-label">Location Name</label>
                         <input
                             type="text"
-                            name="name"
+                            name="city"
                             className="form-control auth-input"
                             placeholder="e.g., Ibadan, Oyo State"
-                            value={formik.values.name}
+                            value={formik.values.city}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                         />
-                        {formik.touched.name && formik.errors.name && (
-                            <small className="text-danger">{formik.errors.name}</small>
+                        {formik.touched.city && formik.errors.city && (
+                            <small className="text-danger">{formik.errors.city}</small>
                         )}
                     </div>
 

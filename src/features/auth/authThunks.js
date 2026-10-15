@@ -42,9 +42,9 @@ export const registerThunk = createAsyncThunk(
 )
 export const updateLocationThunk = createAsyncThunk(
     "auth/updateLocation",
-    async ({ name, latitude, longitude }, { dispatch }) => {
+    async ({ city, latitude, longitude }, { dispatch }) => {
         try {
-            await api.put("/location", { name, latitude, longitude })
+            await api.put("/location", { city, latitude, longitude })
             const profileResponse = await api.get("/profile")
             dispatch(setUser(profileResponse.data.data))
             return profileResponse.data.data

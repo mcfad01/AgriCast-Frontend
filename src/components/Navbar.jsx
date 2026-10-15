@@ -30,9 +30,6 @@ function Navbar() {
                             <Link className="nav-link" to="/dashboard">Dashboard</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/forecast">Forecast</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link className="nav-link" to="/saved-dates">Saved Dates</Link>
                         </li>
                         <li className="nav-item">

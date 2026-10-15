@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
 import { restoreAuthThunk } from "./features/auth/authThunks"
 import { setLoading } from "./features/auth/authSlice"
+import SaveDates from "./pages/SaveDates"
 
 function App() {
     const dispatch = useDispatch()
@@ -51,6 +52,7 @@ function App() {
             <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/saved-dates" element={<SaveDates />} />
                 <Route path="*" element={<Dashboard />} />
             </Routes>
         </AppLayout>

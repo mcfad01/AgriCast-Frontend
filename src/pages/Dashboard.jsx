@@ -5,6 +5,9 @@ import WeatherCard from "../components/WeatherCard"
 import ForecastList from "../components/ForecastList"
 import { getCurrentWeather, getForecast, groupForecastByDay } from "../api/weather"
 import { Sun } from "lucide-react"
+import { getSavedDates } from "../api/savedDates"
+import SaveDateModal from "../components/SaveDateModal"
+import { createSavedDate } from "../api/savedDates"
 
 
 function Dashboard() {
@@ -13,6 +16,8 @@ function Dashboard() {
     const [forecast, setForecast] = useState([])
     const [weatherLoading, setWeatherLoading] = useState(true)
     const [weatherError, setWeatherError] = useState("")
+    const [savedCount, setSavedCount] = useState(0)
+    const [selectedDay, setSelectedDay] = useState(null)
 
     const location = user?.farmLocation
 
@@ -44,6 +49,27 @@ function Dashboard() {
 
         fetchWeather()
     }, [location?.latitude, location?.longitude])
+
+    useEffect(() => {
+        const fetchCount = async () => {
+            try {
+                const response = await getSavedDates()
+                setSavedCount(response.data.length)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        fetchCount()
+    }, [])
+    const handleSaveClick = (day) => {
+        setSelectedDay(day)
+    }
+
+    const handleSaveDate = async (data) => {
+        await createSavedDate(data)
+        const response = await getSavedDates()
+        setSavedCount(response.data.length)
+    }
 
     return (
         <>
@@ -89,7 +115,7 @@ function Dashboard() {
                             <WeatherCard weather={currentWeather} />
                         </div>
                         <div className="col-md-7">
-                            <ForecastList forecast={forecast} />
+                            <ForecastList forecast={forecast} onSaveClick={handleSaveClick} />
                         </div>
                     </div>
                 </>
@@ -100,10 +126,10 @@ function Dashboard() {
                 <div className="col-md-6 mb-3">
                     <div className="glass-panel h-100">
                         <h5 className="mb-3"> Farm Location</h5>
-                        {location?.name ? (
+                        {location?.city ? (
                             <>
                                 <p className="mb-1">
-                                    <strong>{location.name}</strong>
+                                    <strong>{location.city}</strong>
                                 </p>
                                 <p className="small mb-0" style={{ opacity: 0.75 }}>
                                     Lat: {location.latitude}, Lng: {location.longitude}
@@ -121,13 +147,24 @@ function Dashboard() {
                 <div className="col-md-6 mb-3">
                     <div className="glass-panel h-100">
                         <h5 className="mb-3"> Saved Dates</h5>
-                        <p>Coming soon...</p>
+                        <p style={{ opacity: 0.85 }}>
+                            {savedCount === 0
+                                ? "No saved dates yet."
+                                : `You have ${savedCount} saved date${savedCount !== 1 ? "s" : ""}.`
+                            }
+                        </p>
                         <Link to="/saved-dates" className="btn-glass-green d-inline-block mt-3">
                             View All
                         </Link>
                     </div>
                 </div>
             </div>
+
+            <SaveDateModal
+                day={selectedDay}
+                onClose={() => setSelectedDay(null)}
+                onSave={handleSaveDate}
+            />
         </>
     )
 }
