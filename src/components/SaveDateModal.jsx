@@ -60,7 +60,7 @@ function SaveDateModal({ day, onClose, onSave }) {
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h5 className="mb-0">Save this date</h5>
+                    <h3 className="mb-0">Save this date</h3>
                     <button
                         type="button"
                         className="btn-glass"
@@ -71,17 +71,17 @@ function SaveDateModal({ day, onClose, onSave }) {
                     </button>
                 </div>
 
-                <p className="mb-1" style={{ opacity: 0.85 }}>
-                    <strong>
+                <p className="mb-3" style={{ opacity: 0.85 }}>
+                    <>
                         {new Date(day.date).toLocaleDateString("en-US", {
                             weekday: "long",
                             month: "short",
                             day: "numeric"
                         })}
-                    </strong>
+                    </>
                 </p>
 
-                <p className="small mb-3" style={{ opacity: 0.7 }}>
+                <p className="small mb-4" style={{ opacity: 0.7 }}>
                     🌡️ {day.tempAvg}°C · 💧 {day.humidity}% · 🌧️ {day.rainChance}% · 💨 {day.windSpeed} m/s · ☁️ {day.condition}
                 </p>
 

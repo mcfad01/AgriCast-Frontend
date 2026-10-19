@@ -64,3 +64,15 @@ export const groupForecastByDay = (forecastList) => {
         }
     })
 }
+
+export const reverseGeocode = async (lat, lon) => {
+    const response = await fetch(
+        `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${OPENWEATHER_KEY}`
+    )
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch location name")
+    }
+
+    return response.json()
+}

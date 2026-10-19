@@ -1,4 +1,4 @@
-function ConfirmModal({ isOpen, message, onConfirm, onCancel }) {
+function ConfirmModal({ isOpen, message, onConfirm, onCancel, confirmLabel = "Delete" }) {
     if (!isOpen) return null
 
     return (
@@ -7,7 +7,7 @@ function ConfirmModal({ isOpen, message, onConfirm, onCancel }) {
                 position: "fixed",
                 inset: 0,
                 background: "rgba(0, 0, 0, 0.65)",
-                backdropFilter: "blur(6px)",
+                backdropFilter: "blur(8px)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -22,9 +22,9 @@ function ConfirmModal({ isOpen, message, onConfirm, onCancel }) {
                 onClick={(e) => e.stopPropagation()}
             >
                 <h5 className="mb-3">Confirm</h5>
-                <p style={{ opacity: 0.85 }}>{message}</p>
+                <p style={{ opacity: 0.80 }}>{message}</p>
 
-                <div className="d-flex gap-2 justify-content-end mt-4">
+                <div className="d-flex gap-2 justify-content-end ">
                     <button type="button" className="btn-glass" onClick={onCancel}>
                         Cancel
                     </button>
@@ -33,7 +33,7 @@ function ConfirmModal({ isOpen, message, onConfirm, onCancel }) {
                         className="btn-glass-green"
                         onClick={onConfirm}
                     >
-                        Delete
+                        {confirmLabel}
                     </button>
                 </div>
             </div>

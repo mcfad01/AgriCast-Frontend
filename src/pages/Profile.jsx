@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { User, MapPin, Crosshair } from "lucide-react"
+import { reverseGeocode } from "../api/weather"
 import { updateLocationThunk } from "../features/auth/authThunks"
 import { useNavigate } from "react-router-dom"
 
@@ -61,12 +62,26 @@ function Profile() {
         }
 
         navigator.geolocation.getCurrentPosition(
-            (position) => {
-                formik.setFieldValue("latitude", position.coords.latitude.toFixed(6))
-                formik.setFieldValue("longitude", position.coords.longitude.toFixed(6))
+            async (position) => {
+                const lat = position.coords.latitude
+                const lon = position.coords.longitude
 
-                if (!formik.values.name) {
-                    formik.setFieldValue("name", "My Farm")
+                formik.setFieldValue("latitude", lat.toFixed(6))
+                formik.setFieldValue("longitude", lon.toFixed(6))
+
+                try {
+                    const places = await reverseGeocode(lat, lon)
+
+                    if (places && places.length > 0) {
+                        const place = places[0]
+                        const cityName = place.state
+                            ? `${place.name}, ${place.state}`
+                            : place.name
+
+                        formik.setFieldValue("city", cityName)
+                    }
+                } catch (err) {
+                    console.log("Reverse geocode failed:", err)
                 }
             },
             (error) => {
@@ -173,7 +188,7 @@ function Profile() {
                     >
                         {formik.isSubmitting ? "Saving..." : "Save Farm Location"}
                     </button>
-                    
+
                     <button
                         type="button"
                         className="btn-glass ms-2 mt-2"
